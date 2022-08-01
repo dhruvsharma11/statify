@@ -1,0 +1,36 @@
+.card {
+  background-color: #F5F5F7;
+  border-radius: 25px;
+  display: flex; 
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  width: 620px;
+  height: 160px;
+  padding-right: 80px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.title {
+  font-weight: 900;
+}
+
+.profile-text {
+  display: flex; 
+  flex-direction: column;
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.img {
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
