@@ -1,72 +1,628 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import TopSong from "../components/TopSong";
+import Profile from "../components/Profile";
+import { useState } from "react";
+
+const data = [
+  {
+    album: {
+      album_type: "SINGLE",
+      artists: [
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+          },
+          href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+          id: "2PSJ6YriU7JsFucxACpU7Y",
+          name: "CHUNG HA",
+          type: "artist",
+          uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+        },
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+          },
+          href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+          id: "3zDRCqOhJXJfS2YWOEwGMC",
+          name: "Christopher",
+          type: "artist",
+          uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+        },
+      ],
+      available_markets: [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+      ],
+      external_urls: {
+        spotify: "https://open.spotify.com/album/4IRuxkSbw7iZZmnr6Rly2Q",
+      },
+      href: "https://api.spotify.com/v1/albums/4IRuxkSbw7iZZmnr6Rly2Q",
+      id: "4IRuxkSbw7iZZmnr6Rly2Q",
+      images: [
+        {
+          height: 640,
+          url: "https://i.scdn.co/image/ab67616d0000b27390ee0d4d3906192283bae657",
+          width: 640,
+        },
+        {
+          height: 300,
+          url: "https://i.scdn.co/image/ab67616d00001e0290ee0d4d3906192283bae657",
+          width: 300,
+        },
+        {
+          height: 64,
+          url: "https://i.scdn.co/image/ab67616d0000485190ee0d4d3906192283bae657",
+          width: 64,
+        },
+      ],
+      name: "Bad Boy",
+      release_date: "2020-09-23",
+      release_date_precision: "day",
+      total_tracks: 1,
+      type: "album",
+      uri: "spotify:album:4IRuxkSbw7iZZmnr6Rly2Q",
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+        },
+        href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+        id: "2PSJ6YriU7JsFucxACpU7Y",
+        name: "CHUNG HA",
+        type: "artist",
+        uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+      },
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+        },
+        href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+        id: "3zDRCqOhJXJfS2YWOEwGMC",
+        name: "Christopher",
+        type: "artist",
+        uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+      },
+    ],
+    available_markets: [
+      "AD",
+      "AE",
+      "AR",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "BH",
+      "BO",
+      "BR",
+      "CA",
+    ],
+    disc_number: 1,
+    duration_ms: 182586,
+    explicit: false,
+    external_ids: {
+      isrc: "DKAZA2000205",
+    },
+    external_urls: {
+      spotify: "https://open.spotify.com/track/1WCOna34eEMPgjfOOZkGQc",
+    },
+    href: "https://api.spotify.com/v1/tracks/1WCOna34eEMPgjfOOZkGQc",
+    id: "1WCOna34eEMPgjfOOZkGQc",
+    is_local: false,
+    name: "Bad Boy",
+    popularity: 59,
+    preview_url:
+      "https://p.scdn.co/mp3-preview/4a5d3c19a1ff8b656678972268836044675caa80?cid=7b0a687f57bc40b1a25035927985a20b",
+    track_number: 1,
+    type: "track",
+    uri: "spotify:track:1WCOna34eEMPgjfOOZkGQc",
+  },
+  {
+    album: {
+      album_type: "SINGLE",
+      artists: [
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+          },
+          href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+          id: "2PSJ6YriU7JsFucxACpU7Y",
+          name: "CHUNG HA",
+          type: "artist",
+          uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+        },
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+          },
+          href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+          id: "3zDRCqOhJXJfS2YWOEwGMC",
+          name: "Christopher",
+          type: "artist",
+          uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+        },
+      ],
+      available_markets: [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+      ],
+      external_urls: {
+        spotify: "https://open.spotify.com/album/4IRuxkSbw7iZZmnr6Rly2Q",
+      },
+      href: "https://api.spotify.com/v1/albums/4IRuxkSbw7iZZmnr6Rly2Q",
+      id: "4IRuxkSbw7iZZmnr6Rly2Q",
+      images: [
+        {
+          height: 640,
+          url: "https://i.scdn.co/image/ab67616d0000b27390ee0d4d3906192283bae657",
+          width: 640,
+        },
+        {
+          height: 300,
+          url: "https://i.scdn.co/image/ab67616d00001e0290ee0d4d3906192283bae657",
+          width: 300,
+        },
+        {
+          height: 64,
+          url: "https://i.scdn.co/image/ab67616d0000485190ee0d4d3906192283bae657",
+          width: 64,
+        },
+      ],
+      name: "Bad Boy",
+      release_date: "2020-09-23",
+      release_date_precision: "day",
+      total_tracks: 1,
+      type: "album",
+      uri: "spotify:album:4IRuxkSbw7iZZmnr6Rly2Q",
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+        },
+        href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+        id: "2PSJ6YriU7JsFucxACpU7Y",
+        name: "CHUNG HA",
+        type: "artist",
+        uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+      },
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+        },
+        href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+        id: "3zDRCqOhJXJfS2YWOEwGMC",
+        name: "Christopher",
+        type: "artist",
+        uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+      },
+    ],
+    available_markets: [
+      "AD",
+      "AE",
+      "AR",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "BH",
+      "BO",
+      "BR",
+      "CA",
+    ],
+    disc_number: 1,
+    duration_ms: 182586,
+    explicit: false,
+    external_ids: {
+      isrc: "DKAZA2000205",
+    },
+    external_urls: {
+      spotify: "https://open.spotify.com/track/1WCOna34eEMPgjfOOZkGQc",
+    },
+    href: "https://api.spotify.com/v1/tracks/1WCOna34eEMPgjfOOZkGQc",
+    id: "1WCOna34eEMPgjfOOZkGQc",
+    is_local: false,
+    name: "Bad Boy",
+    popularity: 59,
+    preview_url:
+      "https://p.scdn.co/mp3-preview/4a5d3c19a1ff8b656678972268836044675caa80?cid=7b0a687f57bc40b1a25035927985a20b",
+    track_number: 1,
+    type: "track",
+    uri: "spotify:track:1WCOna34eEMPgjfOOZkGQc",
+  },
+  {
+    album: {
+      album_type: "SINGLE",
+      artists: [
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+          },
+          href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+          id: "2PSJ6YriU7JsFucxACpU7Y",
+          name: "CHUNG HA",
+          type: "artist",
+          uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+        },
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+          },
+          href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+          id: "3zDRCqOhJXJfS2YWOEwGMC",
+          name: "Christopher",
+          type: "artist",
+          uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+        },
+      ],
+      available_markets: [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+      ],
+      external_urls: {
+        spotify: "https://open.spotify.com/album/4IRuxkSbw7iZZmnr6Rly2Q",
+      },
+      href: "https://api.spotify.com/v1/albums/4IRuxkSbw7iZZmnr6Rly2Q",
+      id: "4IRuxkSbw7iZZmnr6Rly2Q",
+      images: [
+        {
+          height: 640,
+          url: "https://i.scdn.co/image/ab67616d0000b27390ee0d4d3906192283bae657",
+          width: 640,
+        },
+        {
+          height: 300,
+          url: "https://i.scdn.co/image/ab67616d00001e0290ee0d4d3906192283bae657",
+          width: 300,
+        },
+        {
+          height: 64,
+          url: "https://i.scdn.co/image/ab67616d0000485190ee0d4d3906192283bae657",
+          width: 64,
+        },
+      ],
+      name: "Bad Boy",
+      release_date: "2020-09-23",
+      release_date_precision: "day",
+      total_tracks: 1,
+      type: "album",
+      uri: "spotify:album:4IRuxkSbw7iZZmnr6Rly2Q",
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+        },
+        href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+        id: "2PSJ6YriU7JsFucxACpU7Y",
+        name: "CHUNG HA",
+        type: "artist",
+        uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+      },
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+        },
+        href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+        id: "3zDRCqOhJXJfS2YWOEwGMC",
+        name: "Christopher",
+        type: "artist",
+        uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+      },
+    ],
+    available_markets: [
+      "AD",
+      "AE",
+      "AR",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "BH",
+      "BO",
+      "BR",
+      "CA",
+    ],
+    disc_number: 1,
+    duration_ms: 182586,
+    explicit: false,
+    external_ids: {
+      isrc: "DKAZA2000205",
+    },
+    external_urls: {
+      spotify: "https://open.spotify.com/track/1WCOna34eEMPgjfOOZkGQc",
+    },
+    href: "https://api.spotify.com/v1/tracks/1WCOna34eEMPgjfOOZkGQc",
+    id: "1WCOna34eEMPgjfOOZkGQc",
+    is_local: false,
+    name: "Bad Boy",
+    popularity: 59,
+    preview_url:
+      "https://p.scdn.co/mp3-preview/4a5d3c19a1ff8b656678972268836044675caa80?cid=7b0a687f57bc40b1a25035927985a20b",
+    track_number: 1,
+    type: "track",
+    uri: "spotify:track:1WCOna34eEMPgjfOOZkGQc",
+  },
+  {
+    album: {
+      album_type: "SINGLE",
+      artists: [
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+          },
+          href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+          id: "2PSJ6YriU7JsFucxACpU7Y",
+          name: "CHUNG HA",
+          type: "artist",
+          uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+        },
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+          },
+          href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+          id: "3zDRCqOhJXJfS2YWOEwGMC",
+          name: "Christopher",
+          type: "artist",
+          uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+        },
+      ],
+      available_markets: [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+      ],
+      external_urls: {
+        spotify: "https://open.spotify.com/album/4IRuxkSbw7iZZmnr6Rly2Q",
+      },
+      href: "https://api.spotify.com/v1/albums/4IRuxkSbw7iZZmnr6Rly2Q",
+      id: "4IRuxkSbw7iZZmnr6Rly2Q",
+      images: [
+        {
+          height: 640,
+          url: "https://i.scdn.co/image/ab67616d0000b27390ee0d4d3906192283bae657",
+          width: 640,
+        },
+        {
+          height: 300,
+          url: "https://i.scdn.co/image/ab67616d00001e0290ee0d4d3906192283bae657",
+          width: 300,
+        },
+        {
+          height: 64,
+          url: "https://i.scdn.co/image/ab67616d0000485190ee0d4d3906192283bae657",
+          width: 64,
+        },
+      ],
+      name: "Bad Boy",
+      release_date: "2020-09-23",
+      release_date_precision: "day",
+      total_tracks: 1,
+      type: "album",
+      uri: "spotify:album:4IRuxkSbw7iZZmnr6Rly2Q",
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+        },
+        href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+        id: "2PSJ6YriU7JsFucxACpU7Y",
+        name: "CHUNG HA",
+        type: "artist",
+        uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+      },
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+        },
+        href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+        id: "3zDRCqOhJXJfS2YWOEwGMC",
+        name: "Christopher",
+        type: "artist",
+        uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+      },
+    ],
+    available_markets: [
+      "AD",
+      "AE",
+      "AR",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "BH",
+      "BO",
+      "BR",
+      "CA",
+    ],
+    disc_number: 1,
+    duration_ms: 182586,
+    explicit: false,
+    external_ids: {
+      isrc: "DKAZA2000205",
+    },
+    external_urls: {
+      spotify: "https://open.spotify.com/track/1WCOna34eEMPgjfOOZkGQc",
+    },
+    href: "https://api.spotify.com/v1/tracks/1WCOna34eEMPgjfOOZkGQc",
+    id: "1WCOna34eEMPgjfOOZkGQc",
+    is_local: false,
+    name: "Bad Boy",
+    popularity: 59,
+    preview_url:
+      "https://p.scdn.co/mp3-preview/4a5d3c19a1ff8b656678972268836044675caa80?cid=7b0a687f57bc40b1a25035927985a20b",
+    track_number: 1,
+    type: "track",
+    uri: "spotify:track:1WCOna34eEMPgjfOOZkGQc",
+  },
+  {
+    album: {
+      album_type: "SINGLE",
+      artists: [
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+          },
+          href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+          id: "2PSJ6YriU7JsFucxACpU7Y",
+          name: "CHUNG HA",
+          type: "artist",
+          uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+        },
+        {
+          external_urls: {
+            spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+          },
+          href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+          id: "3zDRCqOhJXJfS2YWOEwGMC",
+          name: "Christopher",
+          type: "artist",
+          uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+        },
+      ],
+      available_markets: [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+      ],
+      external_urls: {
+        spotify: "https://open.spotify.com/album/4IRuxkSbw7iZZmnr6Rly2Q",
+      },
+      href: "https://api.spotify.com/v1/albums/4IRuxkSbw7iZZmnr6Rly2Q",
+      id: "4IRuxkSbw7iZZmnr6Rly2Q",
+      images: [
+        {
+          height: 640,
+          url: "https://i.scdn.co/image/ab67616d0000b27390ee0d4d3906192283bae657",
+          width: 640,
+        },
+        {
+          height: 300,
+          url: "https://i.scdn.co/image/ab67616d00001e0290ee0d4d3906192283bae657",
+          width: 300,
+        },
+        {
+          height: 64,
+          url: "https://i.scdn.co/image/ab67616d0000485190ee0d4d3906192283bae657",
+          width: 64,
+        },
+      ],
+      name: "Bad Boy",
+      release_date: "2020-09-23",
+      release_date_precision: "day",
+      total_tracks: 1,
+      type: "album",
+      uri: "spotify:album:4IRuxkSbw7iZZmnr6Rly2Q",
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y",
+        },
+        href: "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+        id: "2PSJ6YriU7JsFucxACpU7Y",
+        name: "CHUNG HA",
+        type: "artist",
+        uri: "spotify:artist:2PSJ6YriU7JsFucxACpU7Y",
+      },
+      {
+        external_urls: {
+          spotify: "https://open.spotify.com/artist/3zDRCqOhJXJfS2YWOEwGMC",
+        },
+        href: "https://api.spotify.com/v1/artists/3zDRCqOhJXJfS2YWOEwGMC",
+        id: "3zDRCqOhJXJfS2YWOEwGMC",
+        name: "Christopher",
+        type: "artist",
+        uri: "spotify:artist:3zDRCqOhJXJfS2YWOEwGMC",
+      },
+    ],
+    available_markets: [
+      "AD",
+      "AE",
+      "AR",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "BH",
+      "BO",
+      "BR",
+      "CA",
+    ],
+    disc_number: 1,
+    duration_ms: 182586,
+    explicit: false,
+    external_ids: {
+      isrc: "DKAZA2000205",
+    },
+    external_urls: {
+      spotify: "https://open.spotify.com/track/1WCOna34eEMPgjfOOZkGQc",
+    },
+    href: "https://api.spotify.com/v1/tracks/1WCOna34eEMPgjfOOZkGQc",
+    id: "1WCOna34eEMPgjfOOZkGQc",
+    is_local: false,
+    name: "Bad Boy",
+    popularity: 59,
+    preview_url:
+      "https://p.scdn.co/mp3-preview/4a5d3c19a1ff8b656678972268836044675caa80?cid=7b0a687f57bc40b1a25035927985a20b",
+    track_number: 1,
+    type: "track",
+    uri: "spotify:track:1WCOna34eEMPgjfOOZkGQc",
+  },
+];
 
 const Home: NextPage = () => {
+  const [songs, setsongs] = useState([...data]);
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Generated by create next app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a>Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+    <div className="stats-gap">
+      <Profile />
+      <div style={{ marginTop: "4rem" }}>
+        {songs.map((song) => (
+          <TopSong track={song} />
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

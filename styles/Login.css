@@ -1,0 +1,54 @@
+/* Login Page Styling */
+
+.container-stats {
+  transform: translateY(-75px);
+}
+
+.login-box-size {
+    min-width: 50%;
+    margin: auto;
+    vertical-align: middle;
+    
+  }
+  
+  .login-grid { 
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-title {
+    font-size: 250%;
+    font-weight: bold;
+  }
+  
+  .home-subtitle {
+    font-size: 100%;
+  }
+  
+  .login-page {
+    height: 100vh;
+  }
+  
+  .loginbox-grid {
+    display: grid;
+    place-items: center;
+    background-color: aliceblue;
+    height: 100vh;
+    margin: 0 auto;
+  }
+  
+  .stats-grid {
+    display: grid;
+    place-items: center;
+    background-color: rgb(25, 196, 167);
+    height: 100vh;
+    margin: 0auto;
+  }
+
+  .btn-custom {
+    background-color: rgb(25, 196, 167);
+    border-color: black;
+}
