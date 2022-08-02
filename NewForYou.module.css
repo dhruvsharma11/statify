@@ -1,0 +1,34 @@
+.newforyou{
+
+    width: 440px;
+    position: fixed;
+    height: 28vh;
+    background: #F5F5F7;
+    border-radius: 14px;
+
+
+}
+
+.title {
+    text-align: left; 
+    padding-left: 25px;
+    padding-top: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.artist {
+    text-align: left; 
+    padding-left: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.song {
+    text-align: left; 
+    padding-left: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.btn btn-dark {
+    padding-bottom: 20px;
+
+}
