@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import TopSong from "../components/TopSong";
 import Profile from "../components/Profile";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import Spotify from "next-auth/providers/spotify";
 
 const data = [
   {
@@ -613,9 +615,14 @@ const data = [
 
 const Home: NextPage = () => {
   const [songs, setsongs] = useState([...data]);
+  const { data: session } = useSession();
   return (
     <div className="stats-gap">
-      <Profile />
+      {session === undefined ? (
+        <Profile user={"spotify name"} />
+      ) : (
+        <Profile user={session!.user?.name as string} />
+      )}
       <div style={{ marginTop: "4rem" }}>
         {songs.map((song) => (
           <TopSong track={song} />
