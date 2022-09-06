@@ -1,10 +1,31 @@
 .currently{
-
     width: 471px;
     position: fixed;
+    top: 5%;
     height: 22vh;
     background: #F5F5F7;
     border-radius: 14px;
-
-
+    
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+  .doublecolumn {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 2;
+  }
+
