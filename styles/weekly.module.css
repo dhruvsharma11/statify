@@ -1,13 +1,16 @@
-.bigger { font-size:200%; }
-
+.bigger {
+    font-weight: 800;
+    font-size: 200%;
+    align-items:center;
+}
 .weeklyone{
     width: 200px;
     position: fixed;
     height: 12vh;
+    line-height: 500%;
+    padding-left: 15px;
     background: #F5F5F7;
     border-radius: 14px;
-    padding:27px;
-    text-align: right; 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
@@ -19,8 +22,8 @@
     height: 12vh;
     background: #F5F5F7;
     border-radius: 14px;
-    padding:27px;
-    text-align: right; 
+    line-height: 500%;
+    padding-left: 30px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
@@ -32,8 +35,8 @@
     height: 12vh;
     background: #F5F5F7;
     border-radius: 14px;
-    padding:27px;
-    text-align: right; 
+    line-height: 500%;
+    padding-left: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
