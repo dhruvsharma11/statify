@@ -1,50 +1,51 @@
 /*works with the sidebar itself*/
 .Sidebar {
-    width: 175px;
-    position: fixed;
-    overflow: auto;
-    height: 100vh;
-    background-color: black;
-    border-top-right-radius: 24px;
-
+  overflow: auto;
+  width: 125px;
+  height: calc(100% - 2rem);
+  position: absolute;
+  background-color: black;
+  border-radius: 24px;
+  box-shadow: 2rem 2rem 2.5rem #888888;
 }
 
 /*this is the list within*/
 .SideBarList {
-    height: auto;
-    padding: 0;
-    width: 100%;
+  height: auto;
+  padding: 0;
+  width: 100%;
 }
 
 /*each of the tabs*/
-.row{
-    width: 100%;
-    height: 90px;
-    list-style-type: none;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: large;
+.row {
+  width: 100%;
+  height: 90px;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: large;
 }
 
 /*hover*/
 .row:hover {
-    cursor: pointer;
-    background: grey;
+  cursor: pointer;
+  background: grey;
 }
 
 /*works with icon (not exactly but the icon element)*/
 #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
+  flex: 30%;
+  display: grid;
+  place-items: center;
 }
 
 /*same thing as top, but this works with the word*/
 #title {
-    flex: 70%;
+  flex: 70%;
 }

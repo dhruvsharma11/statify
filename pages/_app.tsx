@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../styles/Login.css";
+import "../styles/dashboard.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 //Gavneet Added
 import "../styles/sidebar.module.css";

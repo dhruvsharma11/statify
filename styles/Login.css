@@ -1,54 +1,42 @@
 /* Login Page Styling */
 
-.container-stats {
-  transform: translateY(-75px);
+.home-title {
+  color: white;
+  font-size: 250%;
+  font-weight: bold;
+}
+
+.home-subtitle {
+  color: white;
+  font-size: 100%;
+}
+
+.btn-custom {
+  background-color: #1ed760;
+  border-radius: 15px;
 }
 
 .login-box-size {
-    min-width: 50%;
-    margin: auto;
-    vertical-align: middle;
-    
-  }
-  
-  .login-grid { 
-    display: grid;
-    grid-template-columns: 4fr 6fr;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .home-title {
-    font-size: 250%;
-    font-weight: bold;
-  }
-  
-  .home-subtitle {
-    font-size: 100%;
-  }
-  
-  .login-page {
-    height: 100vh;
-  }
-  
-  .loginbox-grid {
-    display: grid;
-    place-items: center;
-    background-color: aliceblue;
-    height: 100vh;
-    margin: 0 auto;
-  }
-  
-  .stats-grid {
-    display: grid;
-    place-items: center;
-    background-color: rgb(25, 196, 167);
-    height: 100vh;
-    margin: 0auto;
-  }
+  min-width: 60%;
+  margin: auto;
+  text-align: center;
+  font-size: xx-small;
+}
 
-  .btn-custom {
-    background-color: rgb(25, 196, 167);
-    border-color: black;
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: auto;
+  background-color: #191515;
+}
+
+.elements {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

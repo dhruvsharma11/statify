@@ -1,22 +1,26 @@
-.newforyou{
-    width: 440px;
-    position: fixed;
-    height: 28vh;
-    background: #F5F5F7;
-    border-radius: 14px;
+.newforyou {
+  background: #f5f5f7;
+  border-radius: 14px;
 }
-  
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  
-  .column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-  }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.album-img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  max-width: 11rem;
+  border-radius: 12px;
+}

@@ -1,46 +1,26 @@
 import React from "react";
 import styles from "../styles/NewForYou.module.css";
-import Image from "next/image";
+import styles2 from "../styles/Songchart.module.css";
 import albumImage from "../public/swiftAlbum.png";
+import { Button } from "react-bootstrap";
+
+
 
 const NewForYou = () => {
   return (
     <div className={styles.newforyou}>
       <div className={styles.row}>
         <div className={styles.column}>
-          <p
-            style={{
-              fontSize: 20,
-              fontWeight: "bolder",
-              paddingLeft: 10,
-              paddingTop: 10,
-            }}
-          >
-            new for you:
-          </p>
-          <p style={{ paddingLeft: 20 }}>check out |artist's name|</p>
-          <p style={{ paddingLeft: 20 }}>single: |song name|</p>
-          <button
-            type="button"
-            className="btn btn-dark"
-            style={{ width: 200, marginLeft: 10 }}
-          >
+
+          <p style={{ fontSize: 20, fontWeight: "bolder" }}>new for you:</p>
+          <p>check out |artist's name|</p>
+          <p>single: |song name|</p>
+          <Button variant="dark" className={styles2.btn} style={{ width: 200 }}>
             listen now
-          </button>
+          </Button>
         </div>
-        <div className={styles.column}>
-          <Image
-            src={albumImage}
-            style={{
-              paddingLeft: 20,
-              paddingTop: 20,
-              paddingBottom: 20,
-              paddingRight: 20,
-            }}
-            width="50"
-            height="200"
-          />
-        </div>
+        <img src={albumImage.src} className={styles["album-img"]} />
+
       </div>
     </div>
   );

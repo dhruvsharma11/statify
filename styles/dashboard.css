@@ -1,0 +1,27 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 100%;
+  margin-left: calc(125px + 7rem);
+}
+
+.left-component {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 3;
+  justify-content: space-between;
+}
+
+.right-component {
+  display: flex;
+  flex-direction: column;
+  grid-column: 4 / -1;
+  margin-left: 4.5rem;
+  justify-content: space-between;
+}
+
+.dashboard {
+  padding: 1rem;
+  position: relative;
+  height: 100vh;
+}
