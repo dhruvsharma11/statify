@@ -4,11 +4,14 @@ import styles2 from "../styles/Songchart.module.css";
 import albumImage from "../public/swiftAlbum.png";
 import { Button } from "react-bootstrap";
 
+
+
 const NewForYou = () => {
   return (
     <div className={styles.newforyou}>
       <div className={styles.row}>
         <div className={styles.column}>
+
           <p style={{ fontSize: 20, fontWeight: "bolder" }}>new for you:</p>
           <p>check out |artist's name|</p>
           <p>single: |song name|</p>
@@ -17,6 +20,7 @@ const NewForYou = () => {
           </Button>
         </div>
         <img src={albumImage.src} className={styles["album-img"]} />
+
       </div>
     </div>
   );

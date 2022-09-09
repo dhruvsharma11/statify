@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/weekly.module.css";
 
-const LoginBox = () => {
+const Weekly = () => {
   return (
     <div className={styles.weekly}>
       <p className={styles["weekly-box"]}>
@@ -17,4 +17,4 @@ const LoginBox = () => {
   );
 };
 
-export default LoginBox;
+export default Weekly;
