@@ -2,6 +2,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import LoginBox from "../components/LoginBox";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import React from "react";
+
+const transitionValues = {
+  duration: 0.8,
+  yoyo: Infinity,
+  ease: "easeOut",
+};
 
 const Home: NextPage = () => {
   return (
@@ -12,27 +20,32 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="login-grid ">
-        {/* Login Page Header  */}
-        <div className="stats-grid">
-          <div className="text-center container-stats">
-            <Image src="/spotifyLogo.png" width={100} height={100}></Image>
-            {/* Green side of the page */}
-            <div>
-              <h1 className="home-title">Statify</h1>
-              <h2 className="home-subtitle">
-                Please login using your spotify credentials to see your Spotify
-                Stats!
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div>
-          {/* Log in side of page */}
-          <div className="loginbox-grid">
-            {/* login button */}
-            <LoginBox />
-          </div>
+      {/* Login Page Header  */}
+      <div className="elements">
+        <motion.div
+          whileHover={{ rotate: 360 }}
+          transition={{
+            y: transitionValues,
+            width: transitionValues,
+            height: transitionValues,
+          }}
+          animate={{
+            y: [-80, -40, -20],
+            width: ["5rem", "5rem", "6rem"],
+            height: ["5rem", "5rem", "4rem"],
+          }}
+        >
+          <Image src="/spotifyLogo.png" width={100} height={100}></Image>
+        </motion.div>
+        {/* Green side of the page */}
+        <h1 className="home-title">Statify</h1>
+        <h2 className="home-subtitle">
+          Please login using your spotify credentials to see your Spotify Stats!
+        </h2>
+        {/* Log in side of page */}
+        <div className="login-box-size">
+          {/* login button */}
+          <LoginBox />
         </div>
       </div>
     </div>

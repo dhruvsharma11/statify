@@ -1,15 +1,6 @@
-import type { NextPage } from "next";
-import Sidebar from "../components/SideBar";
-import Profile from "../components/Profile";
-import TopSong from "../components/TopSong";
-import Currently from "../components/Currently";
-import Graph from "../components/Graph";
-import Weekly from "../components/Weekly";
-import NewForYou from "../components/NewForYou";
-import StatCategories from "../components/StatCategories";
-import { useState } from "react";
-import { useSession } from "next-auth/react";
-import Head from "next/head";
+import React, { useState } from "react";
+import TopSong from "./TopSong";
+import styles from "../styles/Songchart.module.css";
 
 const data = [
   {
@@ -619,36 +610,25 @@ const data = [
   },
 ];
 
-const Home: NextPage = () => {
+const StatCategories = () => {
   const [songs, setsongs] = useState([...data]);
-  const { data: session } = useSession();
   return (
-    <>
-      <Head>
-        <title>Home | Statify</title>
-      </Head>
-
-      <div className="dashboard">
-        <Sidebar />
-        <div className="grid-container">
-          <div className="left-component">
-            {session === undefined ? (
-              <Profile user={"spotify name"} />
-            ) : (
-              <Profile user={session!.user?.name as string} />
-            )}
-            <Weekly />
-            <StatCategories />
-          </div>
-          <div className="right-component">
-            <Currently />
-            <Graph />
-            <NewForYou />
-          </div>
-        </div>
+    <div>
+      <strong style={{ fontSize: "1.5rem", fontWeight: 700 }}>
+        what's up with you?
+      </strong>
+      <div className={styles["text-align"]}>
+        <p className={styles["btn"]}>your top songs</p>
+        <p className={styles["btn"]}>your top albums</p>
+        <p className={styles["btn"]}>your top artists</p>
       </div>
-    </>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+        {songs.map((song: any) => (
+          <TopSong track={song} />
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default Home;
+export default StatCategories;
