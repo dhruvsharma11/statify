@@ -33,7 +33,7 @@
 }
 
 /*hover*/
-.row:hover {
+.row:is(:nth-child(3), :nth-child(4), :nth-child(5), :nth-child(7)):hover {
   cursor: pointer;
   background: grey;
 }

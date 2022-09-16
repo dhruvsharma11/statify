@@ -15,7 +15,6 @@ const Currently = () => {
       </p>
       <div className={styles.currently}>
         <div className={styles.row}>
-
           <img src={albumImage.src} className={styles["album-img"]} />
 
           <div className={styles.player}>
@@ -33,7 +32,6 @@ const Currently = () => {
                   style={{ width: 25, height: 25, margin: 10 }}
                 />
               </div>
-
             </div>
           </div>
         </div>
