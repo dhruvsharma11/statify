@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-const Profile = ({ user }: { user: string }) => {
+const Profile = ({ user, pfp }: { user: string; pfp: string }) => {
+  console.log(pfp);
   return (
     <div className={styles.card}>
       <div>
@@ -12,12 +13,13 @@ const Profile = ({ user }: { user: string }) => {
         </div>
         <span>It's good to see you again.</span>
       </div>
-      <Image
+      <img
         className={styles.img}
-        src="/profilePicture.jfif"
+        src={pfp}
         height={120}
         width={120}
-      ></Image>
+        alt="User's profile picture"
+      />
     </div>
   );
 };

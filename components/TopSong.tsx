@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Songchart.module.css";
 import { AiFillClockCircle } from "react-icons/ai";
 import { AiFillFire } from "react-icons/ai";
+import { category } from "./StatCategories";
 
 interface playLartist {
   external_urls: external_url;
